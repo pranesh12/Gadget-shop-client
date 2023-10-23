@@ -1,10 +1,19 @@
 import { Col, Container, Row } from "react-bootstrap";
 import CardComponent from "./Components/Card/CardComponent";
-import NavbarComponent from "./Components/Navbar/Navbar";
 import data from "./assets/data.json";
 import Layout from "./Components/Layout/Layout";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts } from "./redux/actions/productActions";
+import { useEffect } from "react";
 
 function App() {
+  const products = useSelector((state) => state.products);
+  console.log(products);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
+
   return (
     <>
       <Layout>
