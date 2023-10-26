@@ -1,36 +1,28 @@
-import { Col, Container, Row } from "react-bootstrap";
-import CardComponent from "./Components/Card/CardComponent";
-import data from "./assets/data.json";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  createRoutesFromElements,
+} from "react-router-dom";
+import Home from "./Pages/Home/Home";
+import ProductDetail from "./Pages/products/ProductDetail";
 import Layout from "./Components/Layout/Layout";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "./redux/actions/productActions";
-import { useEffect } from "react";
 
-function App() {
-  const products = useSelector((state) => state.products);
-  console.log(products);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchProducts());
-  }, [dispatch]);
+const App = () => {
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="/:productId" element={<ProductDetail />} />
+      </Route>
+    )
+  );
 
   return (
     <>
-      <Layout>
-        <Container className="mt-5" fluid="md">
-          <Row>
-            {data.products.map((product) => {
-              return (
-                <Col key={product.id}>
-                  <CardComponent product={product} />
-                </Col>
-              );
-            })}
-          </Row>
-        </Container>
-      </Layout>
+      <RouterProvider router={router} />
     </>
   );
-}
+};
 
 export default App;

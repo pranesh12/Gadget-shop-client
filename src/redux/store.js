@@ -8,8 +8,8 @@ import {
 } from "./reducers/productReducer";
 
 const finalReducer = combineReducers({
-  products: fetchProductsReducer,
-  singleProduct: fetchSingleProductReducer,
+  fetchProductsReducer,
+  fetchSingleProductReducer,
 });
 
 // const currentUser = localStorage.getItem("currentUser")

@@ -1,0 +1,5 @@
+.detail_image {
+  width: 500px;
+  height: 500px;
+  aspect-ratio: auto 500 / 500;
+}
