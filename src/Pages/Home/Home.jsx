@@ -1,11 +1,8 @@
-import { Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-
 import { useEffect } from "react";
 import CardComponent from "../../Components/Card/CardComponent";
 import { fetchProducts } from "../../redux/actions/productActions";
-import { Box, Grid } from "@mui/material";
-Container;
+import { Box, Container, Grid } from "@mui/material";
 
 function Home() {
   const products = useSelector((state) => state.fetchProductsReducer.products);
@@ -20,9 +17,9 @@ function Home() {
     <>
       <Container>
         {loading ? (
-          <Row>
+          <Box>
             <h1>Loadign</h1>
-          </Row>
+          </Box>
         ) : (
           <Grid sx={{ marginTop: "20px" }} container spacing={4}>
             {products?.map((product) => {

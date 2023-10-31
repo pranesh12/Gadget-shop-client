@@ -24,7 +24,7 @@ const CardComponent = ({ product }) => {
           ></CardMedia>
           <Typography variant="h6">{title}</Typography>
 
-          <Link to={`/${_id}`}>
+          <Link to={`/product/${_id}`}>
             <Typography>{title}</Typography>
           </Link>
 

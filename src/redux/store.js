@@ -6,10 +6,13 @@ import {
   fetchProductsReducer,
   fetchSingleProductReducer,
 } from "./reducers/productReducer";
+import { loginReducer, registerReducer } from "./reducers/authReducer";
 
 const finalReducer = combineReducers({
   fetchProductsReducer,
   fetchSingleProductReducer,
+  loginReducer,
+  registerReducer,
 });
 
 // const currentUser = localStorage.getItem("currentUser")
