@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
-  const [loginFrom, setLoginForm] = useState({
+  const [registerForm, setRegisterForm] = useState({
     firstName: "",
     lastName: "",
     email: "",
@@ -16,10 +16,10 @@ const RegisterForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(registerUser(loginFrom));
+    dispatch(registerUser(registerForm));
   };
   const handleChange = (e) => {
-    setLoginForm({ ...loginFrom, [e.target.name]: e.target.value });
+    setRegisterForm({ ...registerForm, [e.target.name]: e.target.value });
   };
 
   return (
@@ -77,6 +77,7 @@ const RegisterForm = () => {
           </Grid>
           <Grid item xs="12">
             <TextField
+              type="password"
               name="password"
               label="Password"
               size="small"
