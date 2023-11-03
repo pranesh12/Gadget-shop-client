@@ -7,19 +7,35 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../redux/actions/AuthAction";
 
-const pages = ["Products", "Pricing", "Blog"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const pages = [
+  {
+    name: "home",
+    link: "/",
+  },
+  {
+    name: "Acount",
+    link: "/login",
+  },
+  {
+    name: "cart",
+    link: "/cart",
+  },
+];
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+  const loginUser = useSelector((state) => state.loginReducer.currentUser);
+  const dispatch = useDispatch();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -36,18 +52,15 @@ function Navbar() {
     setAnchorElUser(null);
   };
 
+  const handleLogout = () => {
+    dispatch(logout());
+  };
+
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
-          <Link to="/">
-            <Button sx={{ color: "white" }}>Home</Button>
-          </Link>
-          <Link to="/login">
-            <Button sx={{ color: "white" }}>Account</Button>
-          </Link>
-
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -78,8 +91,10 @@ function Navbar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem key={page.name} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">
+                    <Link to={page.link}>{page.name}</Link>
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -105,20 +120,23 @@ function Navbar() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {page}
-              </Button>
+              <Link to={page.link} key={page.name}>
+                <Button
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: "white", display: "block" }}
+                >
+                  {page.name}
+                </Button>
+              </Link>
             ))}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Button sx={{ color: "white" }}>
+                  {loginUser.firstName} {loginUser.lastName}
+                </Button>
               </IconButton>
             </Tooltip>
             <Menu
@@ -137,11 +155,9 @@ function Navbar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+              <MenuItem onClick={handleCloseUserMenu}>
+                <Button onClick={handleLogout}> Log out</Button>
+              </MenuItem>
             </Menu>
           </Box>
         </Toolbar>
