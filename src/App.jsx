@@ -11,6 +11,7 @@ import RegisterForm from "./Pages/RegisterForm/RegisterForm";
 import LoginForm from "./Pages/LoginForm/LoginForm";
 import Cart from "./Pages/Cart/Cart";
 import PrivateRoute from "./routes/PrivateRoute";
+import UserOrder from "./Pages/userOrder/UserOrder";
 
 const App = () => {
   const router = createBrowserRouter(
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/product/:productId" element={<ProductDetail />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/register" element={<RegisterForm />} />
+        <Route path="/userorder" element={<UserOrder />} />
         <Route
           path="/cart"
           element={

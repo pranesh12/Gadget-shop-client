@@ -8,6 +8,11 @@ import {
 } from "./reducers/productReducer";
 import { loginReducer, registerReducer } from "./reducers/authReducer";
 import { CartReducer } from "./reducers/cartReducers";
+import {
+  getAllOrderReducer,
+  placeOrderReducer,
+  getUserOrderReducer,
+} from "./reducers/orderReducer";
 
 const finalReducer = combineReducers({
   fetchProductsReducer,
@@ -15,6 +20,9 @@ const finalReducer = combineReducers({
   loginReducer,
   registerReducer,
   CartReducer,
+  getAllOrderReducer,
+  placeOrderReducer,
+  getUserOrderReducer,
 });
 
 const currentUser = localStorage.getItem("currentUser")
@@ -24,10 +32,6 @@ const currentUser = localStorage.getItem("currentUser")
 const cartItems = localStorage.getItem("cartItems")
   ? JSON.parse(localStorage.getItem("cartItems"))
   : [];
-
-// const cartItems = localStorage.getItem("cartItems")
-//   ? JSON.parse(localStorage.getItem("cartItems"))
-//   : [];
 
 const initialState = {
   loginReducer: {

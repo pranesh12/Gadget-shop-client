@@ -10,7 +10,11 @@ import {
   Paper,
   Box,
   Avatar,
+  Button,
+  Stack,
 } from "@mui/material";
+
+import Payment from "../Payment/Payment";
 
 import { useDispatch, useSelector } from "react-redux";
 import RemoveIcon from "@mui/icons-material/Remove";
@@ -18,11 +22,16 @@ import AddIcon from "@mui/icons-material/Add";
 import { green, red } from "@mui/material/colors";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { addTocart, removeFromCart } from "../../redux/actions/cartAction";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const cartItems = useSelector((state) => state.CartReducer.cartItems);
+  const total = Math.floor(
+    cartItems.reduce((acc, current) => acc + current.total, 0)
+  );
+
   const dispatch = useDispatch();
-  console.log(cartItems);
+
   return (
     <Container sx={{ marginTop: 2 }}>
       <Typography sx={{ marginBottom: 2 }} variant="h5">
@@ -40,7 +49,7 @@ const Cart = () => {
               <TableCell>Remove Item</TableCell>
             </TableRow>
           </TableHead>
-          {cartItems.map((item) => {
+          {cartItems?.map((item) => {
             return (
               <TableBody key={item._id}>
                 <TableRow>
@@ -54,24 +63,20 @@ const Cart = () => {
                       justifyContent="center"
                       alignItems="center"
                     >
-                      <RemoveIcon
-                        sx={{ color: red[600], cursor: "pointer" }}
-                        onClick={() => console.log(item)}
-                      />
-                      <RemoveIcon
+                      {/* <RemoveIcon
                         sx={{ color: red[600], cursor: "pointer" }}
                         onClick={() =>
                           dispatch(addTocart(item, item.count - 1))
                         }
-                      />
+                      /> */}
                       <Box p={2}>{item.count}</Box>
-
+                      {/* 
                       <AddIcon
                         sx={{ color: green[500], cursor: "pointer" }}
                         onClick={() =>
                           dispatch(addTocart(item, item.count + 1))
                         }
-                      />
+                      /> */}
                     </Box>
                   </TableCell>
                   <TableCell>${item.price}</TableCell>
@@ -86,8 +91,31 @@ const Cart = () => {
               </TableBody>
             );
           })}
+
+          <TableBody>
+            <TableRow>
+              <TableCell></TableCell>
+              <TableCell></TableCell>
+              <TableCell></TableCell>
+              <TableCell>Total</TableCell>
+              <TableCell>${total}</TableCell>
+              <TableCell></TableCell>
+            </TableRow>
+          </TableBody>
         </Table>
       </TableContainer>
+
+      <Box sx={{ marginTop: 3 }}>
+        <Stack direction="row" justifyContent="space-between">
+          <Link to="/">
+            <Button variant="contained">Continue Shopping</Button>
+          </Link>
+
+          <Box>
+            <Payment total={total} itemOrder={cartItems}></Payment>
+          </Box>
+        </Stack>
+      </Box>
     </Container>
   );
 };

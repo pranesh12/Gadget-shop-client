@@ -28,6 +28,11 @@ const pages = [
     name: "cart",
     link: "/cart",
   },
+
+  {
+    name: "orders",
+    link: "/userorder",
+  },
 ];
 
 function Navbar() {
@@ -93,7 +98,9 @@ function Navbar() {
               {pages.map((page) => (
                 <MenuItem key={page.name} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">
-                    <Link to={page.link}>{page.name}</Link>
+                    <Link sx={{ textDecoration: "none" }} to={page.link}>
+                      {page.name}
+                    </Link>
                   </Typography>
                 </MenuItem>
               ))}
