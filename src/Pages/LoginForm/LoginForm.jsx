@@ -64,7 +64,7 @@ const LoginForm = () => {
           <Typography variant="body"> Don't have an account?</Typography>
         </Grid>
         <Grid>
-          <Link to="/register">
+          <Link to="/auth/register">
             <Button
               color="secondary"
               variant="contained"

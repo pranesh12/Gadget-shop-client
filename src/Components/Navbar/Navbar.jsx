@@ -22,7 +22,7 @@ const pages = [
   },
   {
     name: "Acount",
-    link: "/login",
+    link: "auth/login",
   },
   {
     name: "cart",

@@ -1,10 +1,4 @@
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Route,
-  createRoutesFromElements,
-  Routes,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./Pages/Home/Home";
 import ProductDetail from "./Pages/products/ProductDetail";
 import Layout from "./Components/Layout/Layout";
@@ -31,16 +25,16 @@ const App = () => {
           element: <ProductDetail />,
         },
         {
-          path: "/login",
+          path: "/auth/login",
           element: <LoginForm />,
         },
         {
-          path: "/register",
-          element: <ProductDetail />,
+          path: "/auth/register",
+          element: <RegisterForm />,
         },
         {
           path: "/product/:productId",
-          element: <RegisterForm />,
+          element: <ProductDetail />,
         },
         {
           path: "/userorder",
@@ -68,26 +62,6 @@ const App = () => {
       ],
     },
   ]);
-
-  // const router = createBrowserRouter(
-  //   createRoutesFromElements(
-  //     <Route path="/" element={<Layout />}>
-  //       <Route index element={<Home />} />
-  //       <Route path="/product/:productId" element={<ProductDetail />} />
-  //       <Route path="/login" element={<LoginForm />} />
-  //       <Route path="/register" element={<RegisterForm />} />
-  //       <Route path="/userorder" element={<UserOrder />} />
-  //       <Route
-  //         path="/cart"
-  //         element={
-  //           <PrivateRoute>
-  //             <Cart />
-  //           </PrivateRoute>
-  //         }
-  //       />
-  //     </Route>
-  //   )
-  // );
 
   return (
     <>

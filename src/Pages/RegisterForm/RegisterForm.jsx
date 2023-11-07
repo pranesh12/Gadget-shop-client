@@ -97,7 +97,7 @@ const RegisterForm = () => {
           <Typography variant="body">Already have an account?</Typography>
         </Grid>
         <Grid>
-          <Link to="/login">
+          <Link to="/auth/login">
             <Button
               color="secondary"
               variant="contained"
