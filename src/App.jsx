@@ -9,6 +9,9 @@ import PrivateRoute from "./routes/PrivateRoute";
 import UserOrder from "./Pages/userOrder/UserOrder";
 import AdminLayOut from "./Pages/Admin/AdminLayOut";
 import Admin from "./Pages/Admin/Admin";
+import AdminOrders from "./Pages/Admin/AdminOrders";
+import AdminProduct from "./Pages/Admin/AdminProducts";
+import AdminUsers from "./Pages/Admin/AdminUsers";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -58,6 +61,18 @@ const App = () => {
         {
           path: "/admin",
           element: <Admin />,
+        },
+        {
+          path: "/admin/products",
+          element: <AdminProduct />,
+        },
+        {
+          path: "/admin/orders",
+          element: <AdminOrders />,
+        },
+        {
+          path: "/admin/users",
+          element: <AdminUsers />,
         },
       ],
     },

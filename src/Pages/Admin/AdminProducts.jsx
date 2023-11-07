@@ -1,7 +1,7 @@
 import { Box, Toolbar, Typography } from "@mui/material";
 
 const drawerWidth = 240;
-const Admin = () => {
+const AdminProducts = () => {
   return (
     <>
       <Box
@@ -13,12 +13,10 @@ const Admin = () => {
         }}
       >
         <Toolbar />
-        <Typography paragraph>
-          <h1>Admin</h1>
-        </Typography>
+        <Typography paragraph>Admin Product</Typography>
       </Box>
     </>
   );
 };
 
-export default Admin;
+export default AdminProducts;
