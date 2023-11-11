@@ -24,8 +24,6 @@ const UserOrder = () => {
     (state) => state.getUserOrderReducer.userOrders
   );
 
-  console.log(userOrders);
-
   useEffect(() => {
     dispatch(getUserOrder());
   }, [dispatch]);

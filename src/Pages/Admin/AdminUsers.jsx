@@ -14,10 +14,8 @@ import {
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUsers } from "../../redux/actions/authAction";
-
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
-
 import DeleteIcon from "@mui/icons-material/Delete";
 
 const drawerWidth = 240;
@@ -54,8 +52,14 @@ const AdminUsers = () => {
         }}
       >
         <Toolbar />
-        <Typography paragraph>Admin Users</Typography>
+
         <Container sx={{ marginTop: 2 }}>
+          <Typography
+            variant="h5"
+            sx={{ textAlign: "center", marginBottom: 3 }}
+          >
+            User List
+          </Typography>
           <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
               <TableHead>
