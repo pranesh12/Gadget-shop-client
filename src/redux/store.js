@@ -6,8 +6,14 @@ import {
   fetchProductsReducer,
   fetchSingleProductReducer,
 } from "./reducers/productReducer";
-import { loginReducer, registerReducer } from "./reducers/authReducer";
+import {
+  getAllUsersReducer,
+  loginReducer,
+  registerReducer,
+} from "./reducers/authReducer";
+
 import { CartReducer } from "./reducers/cartReducers";
+
 import {
   getAllOrderReducer,
   placeOrderReducer,
@@ -23,6 +29,7 @@ const finalReducer = combineReducers({
   getAllOrderReducer,
   placeOrderReducer,
   getUserOrderReducer,
+  getAllUsersReducer,
 });
 
 const currentUser = localStorage.getItem("currentUser")

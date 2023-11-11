@@ -5,24 +5,36 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { Outlet } from "react-router";
-// import Outlet from "react-router";
 import { Link } from "react-router-dom";
-import { Button } from "@mui/material";
+import { getAllUsers, logout } from "../../redux/actions/authAction";
+import { useDispatch, useSelector } from "react-redux";
+import LogoutIcon from "@mui/icons-material/Logout";
+import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
+import BoltIcon from "@mui/icons-material/Bolt";
+import InventoryIcon from "@mui/icons-material/Inventory";
+import PersonIcon from "@mui/icons-material/Person";
+import { useEffect } from "react";
+import { getAllOrder } from "../../redux/actions/orderAction";
 
 const drawerWidth = 240;
 
 function AdminLayOut(props) {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.loginReducer.currentUser);
+  useEffect(() => {
+    dispatch(getAllOrder());
+    dispatch(getAllUsers());
+  }, [dispatch]);
+
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -30,43 +42,78 @@ function AdminLayOut(props) {
     setMobileOpen(!mobileOpen);
   };
 
+  const handleLogout = () => {
+    dispatch(logout());
+  };
+
   const drawer = (
     <div>
       <Toolbar />
-      <Divider />
-      <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
 
+      <Divider />
+      <List>
         <ListItem disablePadding>
           <ListItemButton>
             <ListItemIcon>
-              <InboxIcon />
+              <PersonIcon sx={{ color: "#2979ff" }} />
             </ListItemIcon>
-            <Link to="/admin/users" style={{ textDecoration: "none" }}>
-              <Typography sx={{ textDecoration: "none" }}>Users</Typography>
-            </Link>
+            <Typography sx={{ textTransform: "capitalize" }}>
+              {user.firstName} {user.lastName}
+            </Typography>
+          </ListItemButton>
+        </ListItem>
+
+        <Link to={"/admin"}>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <AdminPanelSettingsIcon sx={{ color: "#9c27b0" }} />
+              </ListItemIcon>
+              <ListItemText primary={"Admin"} />
+            </ListItemButton>
+          </ListItem>
+        </Link>
+        <Link to={"/admin/products"}>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <InventoryIcon sx={{ color: "#9c27b0" }} />
+              </ListItemIcon>
+              <ListItemText primary={"Products"} />
+            </ListItemButton>
+          </ListItem>
+        </Link>
+
+        <Link to={"/admin/orders"}>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <BoltIcon sx={{ color: "#ff5722" }} />
+              </ListItemIcon>
+              <ListItemText primary={"Orders"} />
+            </ListItemButton>
+          </ListItem>
+        </Link>
+
+        <Link to={"/admin/users"}>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <AdminPanelSettingsIcon sx={{ color: "#33eb91" }} />
+              </ListItemIcon>
+              <ListItemText primary={"Uesrs"} />
+            </ListItemButton>
+          </ListItem>
+        </Link>
+      </List>
+      <Divider />
+      <List>
+        <ListItem onClick={handleLogout} disablePadding>
+          <ListItemButton>
+            <ListItemIcon>
+              <LogoutIcon sx={{ color: "red" }} />
+            </ListItemIcon>
+            <ListItemText primary={"Log out"} />
           </ListItemButton>
         </ListItem>
       </List>

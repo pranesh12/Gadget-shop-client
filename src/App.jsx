@@ -7,11 +7,12 @@ import LoginForm from "./Pages/LoginForm/LoginForm";
 import Cart from "./Pages/Cart/Cart";
 import PrivateRoute from "./routes/PrivateRoute";
 import UserOrder from "./Pages/userOrder/UserOrder";
-import AdminLayOut from "./Pages/Admin/AdminLayOut";
+import AdminLayOut from "./Components/AdminLayout/AdminLayOut";
 import Admin from "./Pages/Admin/Admin";
 import AdminOrders from "./Pages/Admin/AdminOrders";
 import AdminProduct from "./Pages/Admin/AdminProducts";
 import AdminUsers from "./Pages/Admin/AdminUsers";
+import "./App.css";
 
 const App = () => {
   const router = createBrowserRouter([

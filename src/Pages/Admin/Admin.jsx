@@ -1,7 +1,24 @@
-import { Box, Toolbar, Typography } from "@mui/material";
+import {
+  Box,
+  Card,
+  Toolbar,
+  Typography,
+  CardContent,
+  Grid,
+} from "@mui/material";
 
-const drawerWidth = 240;
+import { useSelector } from "react-redux";
+
 const Admin = () => {
+  const allOrders = useSelector(
+    (state) => state.getAllOrderReducer.adminOrders
+  );
+
+  // const allUsers = useSelector((state) => state.getAllUsersReducer.alluser);
+  // console.log(allUsers);
+
+  console.log(allOrders);
+
   return (
     <>
       <Box
@@ -9,12 +26,57 @@ const Admin = () => {
         sx={{
           flexGrow: 1,
           p: 3,
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
+          width: { sm: `calc(100% - ${240}px)` },
         }}
       >
         <Toolbar />
         <Typography paragraph>
-          <h1>Admin</h1>
+          <Typography
+            variant="h5"
+            sx={{ textAlign: "center", fontWeight: "600", marginBottom: 3 }}
+            component="h1"
+          >
+            Overview
+          </Typography>
+
+          <Grid container justifyContent="center" spacing={3}>
+            <Grid item>
+              <Card sx={{ minWidth: 275 }}>
+                <CardContent>
+                  <Typography variant="h6" component="h1" fontWeight="400">
+                    Products
+                  </Typography>
+                  <Typography sx={{ mt: 1.5 }} color="text.secondary">
+                    12
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item>
+              <Card sx={{ minWidth: 275 }}>
+                <CardContent>
+                  <Typography variant="h6" component="h1" fontWeight="400">
+                    Orders
+                  </Typography>
+                  <Typography sx={{ mt: 1.5 }} color="text.secondary">
+                    12
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item>
+              <Card sx={{ minWidth: 275 }}>
+                <CardContent>
+                  <Typography variant="h6" component="h1" fontWeight="400">
+                    Users
+                  </Typography>
+                  <Typography sx={{ mt: 1.5 }} color="text.secondary">
+                    12
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
         </Typography>
       </Box>
     </>
