@@ -24,6 +24,7 @@ import InventoryIcon from "@mui/icons-material/Inventory";
 import PersonIcon from "@mui/icons-material/Person";
 import { useEffect } from "react";
 import { getAllOrder } from "../../redux/actions/orderAction";
+import AddIcon from "@mui/icons-material/Add";
 
 const drawerWidth = 240;
 
@@ -80,6 +81,16 @@ function AdminLayOut(props) {
                 <InventoryIcon sx={{ color: "#9c27b0" }} />
               </ListItemIcon>
               <ListItemText primary={"Products"} />
+            </ListItemButton>
+          </ListItem>
+        </Link>
+        <Link to={"/admin/addproducts"}>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <AddIcon sx={{ color: "#9c27b0" }} />
+              </ListItemIcon>
+              <ListItemText primary={"Add Product"} />
             </ListItemButton>
           </ListItem>
         </Link>

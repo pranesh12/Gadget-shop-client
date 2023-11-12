@@ -10,11 +10,8 @@ import {
   Paper,
   Avatar,
 } from "@mui/material";
-
 import { useDispatch, useSelector } from "react-redux";
-
 import { green, red } from "@mui/material/colors";
-
 import { useEffect } from "react";
 import { getUserOrder } from "../../redux/actions/orderAction";
 
@@ -49,7 +46,6 @@ const UserOrder = () => {
             userOrders.map((userOrder) => {
               return (
                 <TableBody key={userOrder._id}>
-                  {console.log(userOrder.orders)}
                   {userOrder.orders &&
                     userOrder.orders.map((order) => {
                       return (

@@ -13,6 +13,7 @@ import AdminOrders from "./Pages/Admin/AdminOrders";
 import AdminProduct from "./Pages/Admin/AdminProducts";
 import AdminUsers from "./Pages/Admin/AdminUsers";
 import "./App.css";
+import AddProduct from "./Pages/Admin/AddProducts";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -74,6 +75,10 @@ const App = () => {
         {
           path: "/admin/users",
           element: <AdminUsers />,
+        },
+        {
+          path: "/admin/addproducts",
+          element: <AddProduct />,
         },
       ],
     },
