@@ -3,6 +3,8 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
 
 import {
+  createProductReducer,
+  deleteProductReducer,
   fetchProductsReducer,
   fetchSingleProductReducer,
 } from "./reducers/productReducer";
@@ -30,6 +32,8 @@ const finalReducer = combineReducers({
   placeOrderReducer,
   getUserOrderReducer,
   getAllUsersReducer,
+  createProductReducer,
+  deleteProductReducer,
 });
 
 const currentUser = localStorage.getItem("currentUser")

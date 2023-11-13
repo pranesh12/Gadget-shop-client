@@ -13,7 +13,10 @@ import {
 } from "@mui/material";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "../../redux/actions/productActions";
+import {
+  deleteProduct,
+  fetchProducts,
+} from "../../redux/actions/productActions";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import DeleteIcon from "@mui/icons-material/Delete";
 
@@ -24,6 +27,10 @@ const AdminProducts = () => {
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
+
+  const handleDelete = (id) => {
+    dispatch(deleteProduct(id));
+  };
   return (
     <>
       <Box
@@ -79,6 +86,7 @@ const AdminProducts = () => {
                       <TableCell>{product.category}</TableCell>
                       <TableCell>
                         <DeleteIcon
+                          onClick={() => handleDelete(product._id)}
                           sx={{ color: "#ff3d00", cursor: "pointer" }}
                         />
                       </TableCell>
