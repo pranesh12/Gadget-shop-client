@@ -11,6 +11,9 @@ import {
   DELETE_PRODUCT,
   DELETE_PRODUCT_SUCCESS,
   DELETE_PRODUCT_FAILED,
+  UPDATE_PRODUCT,
+  UPDATE_PRODUCT_SUCCESS,
+  UPDATE_PRODUCT_FAILED,
 } from "../actionType/actiontype";
 
 export const fetchProductsReducer = (state = {}, action) => {
@@ -110,6 +113,33 @@ export const deleteProductReducer = (state = {}, action) => {
       };
 
     case DELETE_PRODUCT_FAILED:
+      return {
+        ...state,
+        loading: false,
+        err: action.payload,
+      };
+
+    default:
+      return state;
+  }
+};
+
+export const updateProductReducer = (state = {}, action) => {
+  switch (action.type) {
+    case UPDATE_PRODUCT:
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case UPDATE_PRODUCT_SUCCESS:
+      return {
+        ...state,
+        udated: action.payload,
+        loading: false,
+      };
+
+    case UPDATE_PRODUCT_FAILED:
       return {
         ...state,
         loading: false,

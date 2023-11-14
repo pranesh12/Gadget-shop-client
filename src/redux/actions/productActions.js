@@ -11,6 +11,9 @@ import {
   DELETE_PRODUCT,
   DELETE_PRODUCT_SUCCESS,
   DELETE_PRODUCT_FAILED,
+  UPDATE_PRODUCT,
+  UPDATE_PRODUCT_SUCCESS,
+  UPDATE_PRODUCT_FAILED,
 } from "../actionType/actiontype";
 import axios from "axios";
 import { url } from "../../api/api";
@@ -54,5 +57,17 @@ export const deleteProduct = (id) => async (dispatch) => {
     window.location.replace("http://localhost:5173/admin/products");
   } catch (err) {
     dispatch({ type: DELETE_PRODUCT_FAILED, payload: err });
+  }
+};
+
+export const updateProduct = (id, udpatedData) => async (dispatch) => {
+  dispatch({ type: UPDATE_PRODUCT });
+  console.log("working");
+  try {
+    const res = await axios.put(url + `products/${id}`, udpatedData);
+    dispatch({ type: UPDATE_PRODUCT_SUCCESS, payload: res.data });
+    window.location = "/admin/products";
+  } catch (error) {
+    dispatch({ type: UPDATE_PRODUCT_FAILED, payload: error });
   }
 };

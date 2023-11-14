@@ -19,6 +19,7 @@ import {
 } from "../../redux/actions/productActions";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
 const AdminProducts = () => {
@@ -30,6 +31,10 @@ const AdminProducts = () => {
 
   const handleDelete = (id) => {
     dispatch(deleteProduct(id));
+  };
+
+  const handleEdit = (id) => {
+    console.log(id);
   };
   return (
     <>
@@ -61,8 +66,8 @@ const AdminProducts = () => {
                   <TableCell>Description</TableCell>
                   <TableCell>Rating</TableCell>
                   <TableCell>Category</TableCell>
-                  <TableCell>Edit</TableCell>
                   <TableCell>Delete</TableCell>
+                  <TableCell>Edit</TableCell>
                 </TableRow>
               </TableHead>
               {products?.map((product) => {
@@ -91,9 +96,11 @@ const AdminProducts = () => {
                         />
                       </TableCell>
                       <TableCell>
-                        <ModeEditIcon
-                          sx={{ color: "#651fff", cursor: "pointer" }}
-                        />
+                        <Link to={`/admin/updateproduct/${product._id}`}>
+                          <ModeEditIcon
+                            sx={{ color: "#651fff", cursor: "pointer" }}
+                          />
+                        </Link>
                       </TableCell>
                     </TableRow>
                   </TableBody>

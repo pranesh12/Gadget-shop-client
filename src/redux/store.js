@@ -7,6 +7,7 @@ import {
   deleteProductReducer,
   fetchProductsReducer,
   fetchSingleProductReducer,
+  updateProductReducer,
 } from "./reducers/productReducer";
 import {
   getAllUsersReducer,
@@ -34,6 +35,7 @@ const finalReducer = combineReducers({
   getAllUsersReducer,
   createProductReducer,
   deleteProductReducer,
+  updateProductReducer,
 });
 
 const currentUser = localStorage.getItem("currentUser")

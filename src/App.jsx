@@ -14,6 +14,7 @@ import AdminProduct from "./Pages/Admin/AdminProducts";
 import AdminUsers from "./Pages/Admin/AdminUsers";
 import "./App.css";
 import AddProduct from "./Pages/Admin/AddProducts";
+import UpdateProduct from "./Pages/Admin/UpdateProduct";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -79,6 +80,10 @@ const App = () => {
         {
           path: "/admin/addproducts",
           element: <AddProduct />,
+        },
+        {
+          path: "/admin/updateproduct/:id",
+          element: <UpdateProduct />,
         },
       ],
     },
