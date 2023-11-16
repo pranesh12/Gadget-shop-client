@@ -223,7 +223,7 @@ const UpdateProduct = () => {
                 variant="contained"
                 type="submit"
               >
-                Add Product
+                Update Product
               </Button>
             </Grid>
           </form>
