@@ -28,10 +28,6 @@ const pages = [
     name: "orders",
     link: "/userorder",
   },
-  {
-    name: "auth",
-    link: "/auth/login",
-  },
 ];
 
 function Navbar() {
@@ -155,7 +151,7 @@ function Navbar() {
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: "white", display: "block" }}
                 >
-                  Account
+                  Auth
                 </Button>
               </Link>
             </Box>
