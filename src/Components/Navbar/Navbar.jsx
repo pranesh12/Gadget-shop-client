@@ -13,17 +13,11 @@ import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/actions/AuthAction";
-import { TextField } from "@mui/material";
-import FilterListIcon from "@mui/icons-material/FilterList";
 
 const pages = [
   {
     name: "home",
     link: "/",
-  },
-  {
-    name: "Acount",
-    link: "auth/login",
   },
   {
     name: "cart",
@@ -33,6 +27,10 @@ const pages = [
   {
     name: "orders",
     link: "/userorder",
+  },
+  {
+    name: "auth",
+    link: "/auth/login",
   },
 ];
 
@@ -120,35 +118,48 @@ function Navbar() {
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Button sx={{ color: "white" }}>
-                  {loginUser.firstName} {loginUser.lastName}
+          {loginUser.email ? (
+            <Box sx={{ flexGrow: 0 }}>
+              <Tooltip title="Open settings">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Button sx={{ color: "white" }}>
+                    {loginUser.firstName} {loginUser.lastName}
+                  </Button>
+                </IconButton>
+              </Tooltip>
+              <Menu
+                sx={{ mt: "45px" }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+              >
+                <MenuItem onClick={handleCloseUserMenu}>
+                  <Button onClick={handleLogout}> Log out</Button>
+                </MenuItem>
+              </Menu>
+            </Box>
+          ) : (
+            <Box>
+              <Link to="auth/login">
+                <Button
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: "white", display: "block" }}
+                >
+                  Account
                 </Button>
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              <MenuItem onClick={handleCloseUserMenu}>
-                <Button onClick={handleLogout}> Log out</Button>
-              </MenuItem>
-            </Menu>
-          </Box>
+              </Link>
+            </Box>
+          )}
         </Toolbar>
       </Container>
     </AppBar>

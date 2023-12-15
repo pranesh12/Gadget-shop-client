@@ -15,6 +15,7 @@ import AdminUsers from "./Pages/Admin/AdminUsers";
 import "./App.css";
 import AddProduct from "./Pages/Admin/AddProducts";
 import UpdateProduct from "./Pages/Admin/UpdateProduct";
+import AdminPrivateRoute from "./routes/AdminPrivateRoute";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -63,27 +64,51 @@ const App = () => {
       children: [
         {
           path: "/admin",
-          element: <Admin />,
+          element: (
+            <AdminPrivateRoute>
+              <Admin />
+            </AdminPrivateRoute>
+          ),
         },
         {
           path: "/admin/products",
-          element: <AdminProduct />,
+          element: (
+            <AdminPrivateRoute>
+              <AdminProduct />
+            </AdminPrivateRoute>
+          ),
         },
         {
           path: "/admin/orders",
-          element: <AdminOrders />,
+          element: (
+            <AdminPrivateRoute>
+              <AdminOrders />
+            </AdminPrivateRoute>
+          ),
         },
         {
           path: "/admin/users",
-          element: <AdminUsers />,
+          element: (
+            <AdminPrivateRoute>
+              <AdminUsers />
+            </AdminPrivateRoute>
+          ),
         },
         {
           path: "/admin/addproducts",
-          element: <AddProduct />,
+          element: (
+            <AdminPrivateRoute>
+              <AddProduct />
+            </AdminPrivateRoute>
+          ),
         },
         {
           path: "/admin/updateproduct/:id",
-          element: <UpdateProduct />,
+          element: (
+            <AdminPrivateRoute>
+              <UpdateProduct />
+            </AdminPrivateRoute>
+          ),
         },
       ],
     },

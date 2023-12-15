@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import CardComponent from "../../Components/Card/CardComponent";
 import { fetchProducts } from "../../redux/actions/productActions";
-import { Box, Container, Grid } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 import Skeleton from "@mui/material/Skeleton";
 
 function Home() {
@@ -20,10 +20,6 @@ function Home() {
     <>
       <Container>
         {loading ? (
-          // <Box sx={{ marginTop: 3 }}>
-          //
-          // </Box>
-
           <Grid sx={{ marginTop: "20px" }} container spacing={4}>
             {dummy.map((product) => {
               return (

@@ -3,7 +3,6 @@ import { placeOrder } from "../../redux/actions/orderAction";
 import { useDispatch } from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
 const Payment = ({ total, itemOrder }) => {
-  console.log(itemOrder);
   const dispatch = useDispatch();
   const handlePayment = (token) => {
     dispatch(placeOrder(total, token));

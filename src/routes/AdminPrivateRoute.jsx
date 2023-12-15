@@ -1,12 +1,12 @@
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 
-const PrivateRoute = ({ children }) => {
+const AdminPrivateRoute = ({ children }) => {
   const user = useSelector((state) => state.loginReducer.currentUser);
-  if (user.email) {
+  if (user.isAdmin == true) {
     return children;
   }
   return <Navigate to="/auth/login" replace={true}></Navigate>;
 };
 
-export default PrivateRoute;
+export default AdminPrivateRoute;

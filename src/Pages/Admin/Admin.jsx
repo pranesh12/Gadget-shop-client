@@ -7,18 +7,7 @@ import {
   Grid,
 } from "@mui/material";
 
-import { useSelector } from "react-redux";
-
 const Admin = () => {
-  const allOrders = useSelector(
-    (state) => state.getAllOrderReducer.adminOrders
-  );
-
-  // const allUsers = useSelector((state) => state.getAllUsersReducer.alluser);
-  // console.log(allUsers);
-
-  console.log(allOrders);
-
   return (
     <>
       <Box

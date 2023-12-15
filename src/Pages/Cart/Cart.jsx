@@ -17,8 +17,7 @@ import {
 import Payment from "../Payment/Payment";
 
 import { useDispatch, useSelector } from "react-redux";
-import RemoveIcon from "@mui/icons-material/Remove";
-import AddIcon from "@mui/icons-material/Add";
+
 import { green, red } from "@mui/material/colors";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { addTocart, removeFromCart } from "../../redux/actions/cartAction";
@@ -63,20 +62,7 @@ const Cart = () => {
                       justifyContent="center"
                       alignItems="center"
                     >
-                      {/* <RemoveIcon
-                        sx={{ color: red[600], cursor: "pointer" }}
-                        onClick={() =>
-                          dispatch(addTocart(item, item.count - 1))
-                        }
-                      /> */}
                       <Box p={2}>{item.count}</Box>
-                      {/* 
-                      <AddIcon
-                        sx={{ color: green[500], cursor: "pointer" }}
-                        onClick={() =>
-                          dispatch(addTocart(item, item.count + 1))
-                        }
-                      /> */}
                     </Box>
                   </TableCell>
                   <TableCell>${item.price}</TableCell>

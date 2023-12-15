@@ -33,9 +33,6 @@ const AdminProducts = () => {
     dispatch(deleteProduct(id));
   };
 
-  const handleEdit = (id) => {
-    console.log(id);
-  };
   return (
     <>
       <Box

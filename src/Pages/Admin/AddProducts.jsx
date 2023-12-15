@@ -47,7 +47,6 @@ const AddProduct = () => {
     setProduct({ ...product, [e.target.name]: e.target.value });
   };
 
-  console.log(product.rating);
   return (
     <>
       <Box
@@ -67,14 +66,13 @@ const AddProduct = () => {
               </Grid>
 
               <Grid item xs="6" sx={{ marginBottom: 4 }}>
-                {/* { added} */}
-                <Alert variant="filled" severity="success">
+                {/* <Alert variant="filled" severity="success">
                   Product Successfully Added
                 </Alert>
 
                 <Alert variant="filled" severity="error">
                   Something Went wrong
-                </Alert>
+                </Alert> */}
               </Grid>
               <Grid item xs="12">
                 <TextField

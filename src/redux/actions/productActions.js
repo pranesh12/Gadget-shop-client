@@ -62,7 +62,6 @@ export const deleteProduct = (id) => async (dispatch) => {
 
 export const updateProduct = (id, udpatedData) => async (dispatch) => {
   dispatch({ type: UPDATE_PRODUCT });
-  console.log("working");
   try {
     const res = await axios.put(url + `products/${id}`, udpatedData);
     dispatch({ type: UPDATE_PRODUCT_SUCCESS, payload: res.data });

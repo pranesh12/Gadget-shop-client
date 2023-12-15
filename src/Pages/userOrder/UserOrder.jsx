@@ -27,8 +27,11 @@ const UserOrder = () => {
 
   return (
     <Container sx={{ marginTop: 2 }}>
-      <Typography sx={{ marginBottom: 2, marginTop: 2 }} variant="h5">
-        User Order Review
+      <Typography
+        sx={{ marginBottom: 3, marginTop: 3, textAlign: "center" }}
+        variant="h5"
+      >
+        User Order
       </Typography>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">

@@ -26,7 +26,6 @@ const AdminOrders = () => {
     dispatch(getAllOrder());
   }, [dispatch]);
 
-  console.log(userOrders);
   return (
     <>
       <Box
@@ -54,7 +53,7 @@ const AdminOrders = () => {
                   <TableCell>Total Cost</TableCell>
                   <TableCell>Email</TableCell>
                   <TableCell>Shipping Address</TableCell>
-                  <TableCell>delivered</TableCell>
+                  <TableCell>Delivered</TableCell>
                 </TableRow>
               </TableHead>
               {userOrders &&
