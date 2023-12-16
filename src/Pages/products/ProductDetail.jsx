@@ -28,7 +28,7 @@ const ProductDetail = () => {
   const loading = useSelector(
     (state) => state.fetchSingleProductReducer.loading
   );
-  const { thumbnail, description, brand, price, title, images } = singleProduct;
+  const { thumbnail, description, brand, price, title } = singleProduct;
 
   useEffect(() => {
     dispatch(fetchSingleProduct(productId));
@@ -42,7 +42,7 @@ const ProductDetail = () => {
     <>
       <Container sx={{ marginTop: 20 }}>
         {loading ? (
-          <h1>Loading</h1>
+          <h1 style={{ textAlign: "center" }}>Loading ....</h1>
         ) : (
           <Grid container spacing={2}>
             <Grid item md={6}>
