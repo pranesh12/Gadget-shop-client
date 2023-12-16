@@ -2,8 +2,8 @@ import { TextField, Grid, Typography, Button } from "@mui/material";
 import { useState } from "react";
 import "./loginForm.css";
 import { useDispatch } from "react-redux";
-import { loginUser } from "../../redux/actions/AuthAction";
 import { Link } from "react-router-dom";
+import { loginUser } from "../../redux/actions/AuthAction";
 
 const LoginForm = () => {
   const [loginFrom, setLoginForm] = useState({ email: "", password: "" });
