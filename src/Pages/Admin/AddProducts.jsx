@@ -6,7 +6,6 @@ import {
   Typography,
   Button,
   Container,
-  Alert,
   Select,
   MenuItem,
   InputLabel,
@@ -30,7 +29,7 @@ const AddProduct = () => {
 
   const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = () => {
     dispatch(createProduct(product));
     setProduct({
       title: "",
@@ -65,15 +64,7 @@ const AddProduct = () => {
                 <Typography variant="h4"></Typography>
               </Grid>
 
-              <Grid item xs="6" sx={{ marginBottom: 4 }}>
-                {/* <Alert variant="filled" severity="success">
-                  Product Successfully Added
-                </Alert>
-
-                <Alert variant="filled" severity="error">
-                  Something Went wrong
-                </Alert> */}
-              </Grid>
+              <Grid item xs="6" sx={{ marginBottom: 4 }}></Grid>
               <Grid item xs="12">
                 <TextField
                   name="title"
