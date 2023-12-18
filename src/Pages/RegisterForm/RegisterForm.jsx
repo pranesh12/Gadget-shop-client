@@ -1,6 +1,5 @@
 import { TextField, Grid, Typography, Button } from "@mui/material";
 import { useState } from "react";
-import "../LoginForm/LoginForm";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { registerUser } from "../../redux/actions/AuthAction";
