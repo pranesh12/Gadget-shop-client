@@ -2,8 +2,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./Pages/Home/Home";
 import ProductDetail from "./Pages/products/ProductDetail";
 import Layout from "./Components/Layout/Layout";
-import RegisterForm from "./Pages/RegisterForm/RegisterForm";
-import LoginForm from "./Pages/LoginForm/LoginForm";
 import Cart from "./Pages/Cart/Cart";
 import PrivateRoute from "./routes/PrivateRoute";
 import UserOrder from "./Pages/userOrder/UserOrder";
@@ -16,6 +14,8 @@ import "./App.css";
 import AddProduct from "./Pages/Admin/AddProducts";
 import UpdateProduct from "./Pages/Admin/UpdateProduct";
 import AdminPrivateRoute from "./routes/AdminPrivateRoute";
+import RegisterForm from "./Pages/authForm/RegisterForm";
+import LoginForm from "./Pages/authForm/LoginForm";
 
 const App = () => {
   const router = createBrowserRouter([

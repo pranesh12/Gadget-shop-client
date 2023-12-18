@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { registerUser } from "../../redux/actions/AuthAction";
+import "./loginForm.css";
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
