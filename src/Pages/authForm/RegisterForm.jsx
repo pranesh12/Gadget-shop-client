@@ -2,7 +2,7 @@ import { TextField, Grid, Typography, Button } from "@mui/material";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { registerUser } from "../../redux/actions/AuthAction";
+import { registerUser } from "../../redux/actions/authAction";
 import "./loginForm.css";
 
 const RegisterForm = () => {

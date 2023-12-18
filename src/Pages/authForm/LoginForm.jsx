@@ -3,7 +3,7 @@ import { useState } from "react";
 import "./loginForm.css";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { loginUser } from "../../redux/actions/AuthAction";
+import { loginUser } from "../../redux/actions/authAction";
 
 const LoginForm = () => {
   const [loginFrom, setLoginForm] = useState({ email: "", password: "" });
